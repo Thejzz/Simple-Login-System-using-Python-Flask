@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block title %} Login {% endblock%}
+{% block content %}
+<h1>Login Page</h1>
+<form action = "{{ url_for('login')}}" method = "POST">
+    User Name : <input type = "text" name = "name" autocomplete = "off">
+    Password : <input type = "password" name = "password">
+    <input type = "submit" value = "Login">
+</form>
+{% if error%}
+<p style = "color:red">Wrong User or Password</p>
+{% endif %}
+{% endblock %}
