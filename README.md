@@ -1,0 +1,2 @@
+# Simple-Login-System-using-Python-Flask
+It is a simple login system created using Python and Flask. It allows users to securely log in and manages sessions to keep them logged in as they use the application.Here the Passwords are securely stored to protect user information.The user interface for logging in and registering are designed as straight forward,focusing on easy navigation and basic error handling.
