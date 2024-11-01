@@ -1,5 +1,12 @@
-{% extends 'base.html'%}
-{% block title %} Dashboard {% endblock%}
-{% block content %}
-<h1>Login Successful</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome</h2>
+    <p>Hello, {{ username }}! Welcome to your dashboard.</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
