@@ -2,27 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        table,th,td{
-            border:1px solid black
-        }
-    </style>
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
-    <h2> Registration Details</h2>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-        </tr>
-        <tr>
-            <td> {{ name }} </td>
-            <td> {{ number }} </td>
-            <td> {{ email }} </td>
-        </tr>
-    </table>
+    <h2>Register</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+            <p style="color: {{ 'red' if category == 'danger' else 'green' }}">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="name">Username:</label>
+        <input type="text" name="name" autocomplete="off" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
 </body>
 </html>
