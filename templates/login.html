@@ -1,13 +1,30 @@
-{% extends 'base.html'%}
-{% block title %} Login {% endblock%}
-{% block content %}
-<h1>Login Page</h1>
-<form action = "{{ url_for('login')}}" method = "POST">
-    User Name : <input type = "text" name = "name" autocomplete = "off">
-    Password : <input type = "password" name = "password">
-    <input type = "submit" value = "Login">
-</form>
-{% if error%}
-<p style = "color:red">Wrong User or Password</p>
-{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+            <p style="color: {{ 'red' if category == 'danger' else 'green' }}">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <label for="name">Username:</label>
+        <input type="text" name="name" autocomplete="off" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+        
+        <button type="submit">Login</button>
+    </form>
+    {% if error%}
+    <p style = "color:red">Wrong User or Password</p>
+    {% endif %}
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+</body>
+</html>
